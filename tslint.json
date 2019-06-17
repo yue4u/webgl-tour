@@ -1,0 +1,15 @@
+{
+    "extends": "tslint:latest",
+    "rules": {
+      "variable-name": [
+        true,
+        "allow-pascal-case"
+      ],
+      "import-spacing": false,
+      "object-literal-sort-keys": false,
+      "no-namespace": false,
+      "no-console": false,
+      "interface-name": false
+    }
+  }
+  
