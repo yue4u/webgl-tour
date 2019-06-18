@@ -1,6 +1,6 @@
-import React from "react";
-import About from "./pages/About";
-import Home from "./pages/Home/Index";
+import Index from "./pages/Index";
+import D1 from "./pages/day-1/Index";
+import D2 from "./pages/day-2/Index";
 
 interface Routes {
   title: string;
@@ -10,9 +10,19 @@ interface Routes {
 
 const routes: Routes[] = [
   {
-    title: "Day 1",
+    title: "Home",
     url: "/",
-    component: Home
+    component: Index
+  },
+  {
+    title: "Day 1",
+    url: "/day-1",
+    component: D1
+  },
+  {
+    title: "Day 2",
+    url: "/day-2",
+    component: D2
   }
 ];
 

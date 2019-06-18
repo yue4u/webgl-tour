@@ -6,7 +6,6 @@ import { colors } from "../Theme";
 
 const GlobalSideBar = styled.aside`
   width: 20%;
-  height: 100%;
   border-right: 1px solid #eee;
 `;
 

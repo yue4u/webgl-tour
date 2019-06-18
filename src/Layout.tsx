@@ -5,13 +5,21 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import SideBar from "./components/SideBar";
 
+const Flex = styled.div`
+  display: flex;
+  justify-content: space-between;
+  min-height: 100%;
+`;
+
 const FlexColumn = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 100%;
+  min-height: 100%;
+  flex-direction: column;
 `;
 const LayoutMain = styled.main`
   width: 80%;
+  position: relative;
 `;
 export default function Layout({ children }: any) {
   return (
@@ -38,17 +46,19 @@ export default function Layout({ children }: any) {
           }
           #root {
             width: 100%;
-            height: 100%;
+            min-height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
           }
         `}
       />
-      <Header />
       <FlexColumn>
-        <SideBar />
-        <LayoutMain>{children}</LayoutMain>
+        <Header />
+        <Flex>
+          <SideBar />
+          <LayoutMain>{children}</LayoutMain>
+        </Flex>
       </FlexColumn>
       <Footer />
     </>
