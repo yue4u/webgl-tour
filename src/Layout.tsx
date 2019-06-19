@@ -7,12 +7,14 @@ import SideBar from "./components/SideBar";
 
 const Flex = styled.div`
   display: flex;
+  flex-grow: 1;
   justify-content: space-between;
   min-height: 100%;
 `;
 
 const FlexColumn = styled.div`
   display: flex;
+  flex-grow: 1;
   justify-content: space-between;
   min-height: 100%;
   flex-direction: column;

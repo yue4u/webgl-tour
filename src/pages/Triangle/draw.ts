@@ -1,21 +1,21 @@
-import { glsl } from "../../helpers";
+import { vec4, Vec4, resize } from "../../helpers";
 
-export default function draw() {
-  const v = glsl`
+export default function draw(color: Vec4, positions: number[]) {
+  const v = `
   attribute vec4 a_position;
   void main() {
       gl_Position = a_position;
   }
 `;
-  const f = glsl`
+  const f = `
   precision mediump float;
   void main() {
-      gl_FragColor = vec4(0.12,0.69,0.66,1);
+      gl_FragColor = ${vec4(color)};
   }
 `;
-
   const canvas = document.getElementById("canvas") as HTMLCanvasElement;
   const gl = canvas.getContext("webgl") as WebGLRenderingContext;
+  resize(canvas);
 
   const createShader = (type: number, source: string) => {
     const shader = gl.createShader(type) as WebGLShader;
@@ -49,7 +49,6 @@ export default function draw() {
   const aPosition = gl.getAttribLocation(program, "a_position");
   const positionBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-  const positions = [0, 0, 0, 0.5, 0.7, 0];
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
   gl.clearColor(0, 0, 0, 0);

@@ -4,6 +4,7 @@ const ControllerWrapper = styled.div`
   width: 100%;
   top: 0;
   left: 0;
+  display: flex;
 `;
-const Controller = () => <ControllerWrapper />;
-export default Controller;
+
+export default ControllerWrapper;

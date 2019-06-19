@@ -7,14 +7,16 @@ type IndicatorProps = {
 };
 
 type ColorPickerProps = {
-  onColorChange(color: ColorResult): void;
+  init: string;
+  handleColorChange(color: ColorResult): void;
 };
 
 const Wrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
   margin: 1rem;
+  display: inline-block;
+  .sketch-picker {
+    position: absolute;
+  }
 `;
 
 const Indicator = styled.div<IndicatorProps>`
@@ -25,14 +27,17 @@ const Indicator = styled.div<IndicatorProps>`
   box-shadow: 0 0 5px #555;
 `;
 
-export default function ColorPicker({ onColorChange }: ColorPickerProps) {
-  const [color, setColor] = useState<ColorResult | string>("#000");
+export default function ColorPicker({
+  init,
+  handleColorChange
+}: ColorPickerProps) {
+  const [color, setColor] = useState<ColorResult | string>(init);
   const [display, setDisplay] = useState(false);
 
   const handleChangeComplete = (color: ColorResult) => {
     setColor(color);
     setDisplay(false);
-    onColorChange(color);
+    handleColorChange(color);
   };
   const hex = typeof color === "string" ? color : color.hex;
   return (
