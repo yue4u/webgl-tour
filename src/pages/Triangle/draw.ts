@@ -1,6 +1,10 @@
 import { vec4, Vec4, resize } from "../../helpers";
 
-export default function draw(color: Vec4, positions: number[]) {
+export default function draw(
+  color: Vec4,
+  positions: number[],
+  translate: { x: number; y: number }
+) {
   const v = `
   attribute vec4 a_position;
   void main() {
@@ -16,7 +20,9 @@ export default function draw(color: Vec4, positions: number[]) {
   const canvas = document.getElementById("canvas") as HTMLCanvasElement;
   const gl = canvas.getContext("webgl") as WebGLRenderingContext;
   resize(canvas);
-
+  positions = positions.map((val, index) =>
+    index % 2 === 0 ? val + translate.x - 1 : val + translate.y - 1
+  );
   const createShader = (type: number, source: string) => {
     const shader = gl.createShader(type) as WebGLShader;
     gl.shaderSource(shader, source);

@@ -6,7 +6,7 @@ type IndicatorProps = {
   color: string;
 };
 
-type ColorPickerProps = {
+type ColorInputProps = {
   init: string;
   handleColorChange(color: ColorResult): void;
 };
@@ -27,10 +27,10 @@ const Indicator = styled.div<IndicatorProps>`
   box-shadow: 0 0 5px #555;
 `;
 
-export default function ColorPicker({
+export default function ColorInput({
   init,
   handleColorChange
-}: ColorPickerProps) {
+}: ColorInputProps) {
   const [color, setColor] = useState<ColorResult | string>(init);
   const [display, setDisplay] = useState(false);
 

@@ -1,3 +1,4 @@
-export { default as ColorPicker } from "./ColorPicker";
+export { default as ColorInput } from "./ColorInput";
 export { default as VecInput } from "./VecInput";
-export { default as Wrapper } from "./Wrapper";
+export { default as Wrapper, ControllerRow } from "./Wrapper";
+export { default as RangeInput } from "./RangeInput";
