@@ -16,14 +16,15 @@ const MainCanvas = styled.canvas`
   max-height: 85vh;
 `;
 
-export default function Triangle() {
-  const initPos = [-1, -1, 0, 1, 1, 1, 2];
+export default function Triangle2() {
+  const initPos = [0, 0, 0, 100, 100, 100, 100, 100, 100, 200, 200, 200];
   const [vec, setVec] = useState<Vec4>([80, 227, 194, 1]);
   const [pos, setPos] = useState(initPos);
-  const [translate, setTranslate] = useState({ x: 1, y: 1 });
+  const [translate, setTranslate] = useState({ x: 300, y: 100 });
+  const [scale, setScale] = useState(1.2);
   useEffect(() => {
-    draw(vec, pos, translate);
-  }, [vec, pos, translate]);
+    draw(vec, pos, translate,scale);
+  }, [vec, pos, translate,scale]);
 
   const handleColorChange = (color: ColorResult) => {
     const { r, g, b, a } = color.rgb;
@@ -36,7 +37,7 @@ export default function Triangle() {
 
   return (
     <>
-      <MainCanvas id="canvas" />
+      <MainCanvas id="rectangle" />
       <Wrapper>
         <ColorInput init={"#50E3C2"} handleColorChange={handleColorChange} />
         <VecInput init={pos} onVecChange={handlePosChange} />
@@ -44,8 +45,8 @@ export default function Triangle() {
           <RangeInput
             label={"x"}
             value={translate.x}
-            max={2}
-            step={0.01}
+            max={1000}
+            step={1}
             onValueChange={x => setTranslate({ ...translate, x })}
           />
         </ControllerRow>
@@ -53,9 +54,18 @@ export default function Triangle() {
           <RangeInput
             label={"y"}
             value={translate.y}
-            max={2}
-            step={0.01}
+            max={1000}
+            step={1}
             onValueChange={y => setTranslate({ ...translate, y })}
+          />
+        </ControllerRow>
+        <ControllerRow>
+          <RangeInput
+            label={"scale"}
+            value={scale}
+            max={5}
+            step={0.2}
+            onValueChange={s => setScale(s)}
           />
         </ControllerRow>
       </Wrapper>

@@ -44,6 +44,7 @@ export default function RangeInput({
         max={max.toString()}
         onChange={e => handleValueChangeLocal(e.target.value)}
       />
+      {value}
     </Wrapper>
   );
 }
