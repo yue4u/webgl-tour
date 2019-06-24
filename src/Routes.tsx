@@ -1,6 +1,7 @@
 import Index from "./pages/Index";
 import Triangle from "./pages/Triangle/Index";
 import Triangle2 from "./pages/Triangle2/Index";
+import Color from "./pages/Color/Index";
 
 interface Routes {
   title: string;
@@ -23,6 +24,11 @@ const routes: Routes[] = [
     title: "Triangle-2",
     url: "/triangle-2",
     component: Triangle2
+  },
+  {
+    title: "Color",
+    url: "/color",
+    component: Color
   }
 ];
 

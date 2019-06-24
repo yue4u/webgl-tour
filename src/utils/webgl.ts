@@ -58,7 +58,7 @@ function getGLUtils(gl: WebGLRenderingContext) {
     },
     vert(templateString: TemplateStringsArray, ...args: string[]) {
       const code = this.interpolate(templateString, ...args);
-      console.log(code)
+      // console.log(code)
       return this.createShader(
         gl.VERTEX_SHADER,
         code
@@ -66,7 +66,7 @@ function getGLUtils(gl: WebGLRenderingContext) {
     },
     frag(templateString: TemplateStringsArray, ...args: string[]) {
       const code = this.interpolate(templateString, ...args);
-      console.log(code)
+      //console.log(code)
       return this.createShader(
         gl.FRAGMENT_SHADER,
         code
