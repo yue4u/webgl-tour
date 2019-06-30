@@ -1,13 +1,13 @@
-import React from "react";
 import styled from "@emotion/styled";
+import React from "react";
 
-type RangeInputProps = {
+interface RangeInputProps {
   value: number;
   label?: string;
   max: number;
   step?: number;
   onValueChange(range: number): void;
-};
+}
 
 const Wrapper = styled.div`
   margin: 1rem;
@@ -25,7 +25,7 @@ export default function RangeInput({
   max,
   label,
   step,
-  onValueChange
+  onValueChange,
 }: RangeInputProps) {
   const handleValueChangeLocal = (valueStr: string) => {
     const newValue = parseFloat(valueStr);
@@ -42,7 +42,7 @@ export default function RangeInput({
         value={value.toString()}
         type="range"
         max={max.toString()}
-        onChange={e => handleValueChangeLocal(e.target.value)}
+        onChange={(e) => handleValueChangeLocal(e.target.value)}
       />
       {value}
     </Wrapper>

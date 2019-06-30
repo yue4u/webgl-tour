@@ -1,9 +1,9 @@
-import React, { useState } from "react";
 import styled from "@emotion/styled";
-type VecInputProps = {
+import React, { useState } from "react";
+interface VecInputProps {
   init?: number[];
   onVecChange(vec: number[]): void;
-};
+}
 const VecInputWrapper = styled.div`
   height: 1rem;
   margin: 1rem;
@@ -24,7 +24,7 @@ const VecInputCell = styled.input`
 `;
 
 export default function VecInput({ init = [], onVecChange }: VecInputProps) {
-  const initString = [...init].map(v => v.toString());
+  const initString = [...init].map((v) => v.toString());
   const [vec, setVec] = useState(initString);
 
   const handleChange = (val: string, index: number) => {
@@ -33,12 +33,12 @@ export default function VecInput({ init = [], onVecChange }: VecInputProps) {
     setVec(newVec);
 
     const newNumVec = Array(newVec.length).fill(0);
-    for (let [index, val] of newVec.entries()) {
-      const num = parseFloat(val);
+    for (const [i, v] of newVec.entries()) {
+      const num = parseFloat(v);
       if (typeof num !== "number" || isNaN(num)) {
         return;
       } else {
-        newNumVec[index] = num;
+        newNumVec[i] = num;
       }
     }
     onVecChange(newNumVec);
@@ -46,11 +46,11 @@ export default function VecInput({ init = [], onVecChange }: VecInputProps) {
 
   return (
     <VecInputWrapper>
-      {vec.map((vec, index) => (
+      {vec.map((n, index) => (
         <VecInputCell
           key={`i-${index}`}
-          value={vec}
-          onChange={e => {
+          value={n}
+          onChange={(e) => {
             handleChange(e.target.value, index);
           }}
         />

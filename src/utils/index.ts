@@ -6,4 +6,3 @@ export const vec4 = (colors: Vec4) => {
     .join(", ");
   return `vec4(${colorStr})`;
 };
-

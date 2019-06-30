@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
-import draw from "./draw";
+import React, { useEffect, useState } from "react";
+import { ColorResult } from "react-color";
 import {
-  Wrapper,
-  VecInput,
   ColorInput,
+  ControllerRow,
   RangeInput,
-  ControllerRow
+  VecInput,
+  Wrapper,
 } from "../../components/Controller";
 import { Vec4 } from "../../utils";
-import { ColorResult } from "react-color";
+import draw from "./draw";
 const MainCanvas = styled.canvas`
   width: 100%;
   height: 100%;
@@ -23,16 +23,16 @@ export default function Triangle2() {
   const [translate, setTranslate] = useState({ x: 300, y: 100 });
   const [scale, setScale] = useState(1.2);
   useEffect(() => {
-    draw(vec, pos, translate,scale);
-  }, [vec, pos, translate,scale]);
+    draw(vec, pos, translate, scale);
+  }, [vec, pos, translate, scale]);
 
   const handleColorChange = (color: ColorResult) => {
     const { r, g, b, a } = color.rgb;
     setVec([r, g, b, a ? a : 1]);
   };
 
-  const handlePosChange = (vec: number[]) => {
-    setPos(vec);
+  const handlePosChange = (newVec: number[]) => {
+    setPos(newVec);
   };
 
   return (
@@ -47,7 +47,7 @@ export default function Triangle2() {
             value={translate.x}
             max={1000}
             step={1}
-            onValueChange={x => setTranslate({ ...translate, x })}
+            onValueChange={(x) => setTranslate({ ...translate, x })}
           />
         </ControllerRow>
         <ControllerRow>
@@ -56,7 +56,7 @@ export default function Triangle2() {
             value={translate.y}
             max={1000}
             step={1}
-            onValueChange={y => setTranslate({ ...translate, y })}
+            onValueChange={(y) => setTranslate({ ...translate, y })}
           />
         </ControllerRow>
         <ControllerRow>
@@ -65,7 +65,7 @@ export default function Triangle2() {
             value={scale}
             max={5}
             step={0.2}
-            onValueChange={s => setScale(s)}
+            onValueChange={(s) => setScale(s)}
           />
         </ControllerRow>
       </Wrapper>

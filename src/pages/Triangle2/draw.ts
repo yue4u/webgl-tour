@@ -5,10 +5,10 @@ export default function draw(
   color: Vec4,
   positions: number[],
   translate: { x: number; y: number },
-  scale: number
+  scale: number,
 ) {
   positions = positions.map((val, index) =>
-  (  index % 2 === 0 ? val + translate.x : val + translate.y) * scale
+  (index % 2 === 0 ? val + translate.x : val + translate.y) * scale,
   );
 
   const gl = GL("rectangle");
@@ -37,10 +37,8 @@ export default function draw(
   const aPosition = gl.getAttribLocation(program, "a_position");
   const positionBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-  
+
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
-  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
-  gl.utils.clear();
   gl.useProgram(program);
 
   gl.uniform2f(uResolution, gl.canvas.width, gl.canvas.height);

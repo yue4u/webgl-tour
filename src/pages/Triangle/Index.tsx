@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
-import draw from "./draw";
+import React, { useEffect, useState } from "react";
+import { ColorResult } from "react-color";
 import {
-  Wrapper,
-  VecInput,
   ColorInput,
+  ControllerRow,
   RangeInput,
-  ControllerRow
+  VecInput,
+  Wrapper,
 } from "../../components/Controller";
 import { Vec4 } from "../../utils";
-import { ColorResult } from "react-color";
+import draw from "./draw";
 const MainCanvas = styled.canvas`
   width: 100%;
   height: 100%;
@@ -30,8 +30,8 @@ export default function Triangle() {
     setVec([r, g, b, a ? a : 1]);
   };
 
-  const handlePosChange = (vec: number[]) => {
-    setPos(vec);
+  const handlePosChange = (newVec: number[]) => {
+    setPos(newVec);
   };
 
   return (
@@ -46,7 +46,7 @@ export default function Triangle() {
             value={translate.x}
             max={2}
             step={0.01}
-            onValueChange={x => setTranslate({ ...translate, x })}
+            onValueChange={(x) => setTranslate({ ...translate, x })}
           />
         </ControllerRow>
         <ControllerRow>
@@ -55,7 +55,7 @@ export default function Triangle() {
             value={translate.y}
             max={2}
             step={0.01}
-            onValueChange={y => setTranslate({ ...translate, y })}
+            onValueChange={(y) => setTranslate({ ...translate, y })}
           />
         </ControllerRow>
       </Wrapper>

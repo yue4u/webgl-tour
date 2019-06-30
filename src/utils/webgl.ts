@@ -15,7 +15,10 @@ export default function GL(canvasID: string) {
   }
   const gl = context as GLInstance;
   gl.utils = getGLUtils(gl);
-  gl.utils.resize(canvas)
+  gl.utils.resize(canvas);
+
+  gl.viewport(0, 0, canvas.width, canvas.height);
+  gl.utils.clear();
   return gl;
 }
 
@@ -43,7 +46,6 @@ function getGLUtils(gl: WebGLRenderingContext) {
       throw new Error("cannot create shader");
     },
     createProgram(vertexShader: WebGLShader, fragmentShader: WebGLShader) {
-
       const program = gl.createProgram() as WebGLProgram;
       gl.attachShader(program, vertexShader);
       gl.attachShader(program, fragmentShader);
@@ -59,18 +61,12 @@ function getGLUtils(gl: WebGLRenderingContext) {
     vert(templateString: TemplateStringsArray, ...args: string[]) {
       const code = this.interpolate(templateString, ...args);
       // console.log(code)
-      return this.createShader(
-        gl.VERTEX_SHADER,
-        code
-      );
+      return this.createShader(gl.VERTEX_SHADER, code);
     },
     frag(templateString: TemplateStringsArray, ...args: string[]) {
       const code = this.interpolate(templateString, ...args);
-      //console.log(code)
-      return this.createShader(
-        gl.FRAGMENT_SHADER,
-        code
-      );
+      // console.log(code)
+      return this.createShader(gl.FRAGMENT_SHADER, code);
     },
     interpolate(templateString: TemplateStringsArray, ...args: string[]) {
       return (
@@ -83,9 +79,12 @@ function getGLUtils(gl: WebGLRenderingContext) {
           .join("")
       );
     },
-    clear(){
+    clear() {
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
-    }
-  }
+    },
+    randomInt(range: number) {
+      return Math.floor(Math.random() * range);
+    },
+  };
 }

@@ -1,13 +1,11 @@
-import { Vec4 } from "../../utils";
 import GL from "../../utils/webgl";
 
 export default function draw(
-  color: Vec4,
   positions: number[],
-  translate: { x: number; y: number }
+  translate: { x: number; y: number },
 ) {
   positions = positions.map((val, index) =>
-    index % 2 === 0 ? val + translate.x - 1 : val + translate.y - 1
+    index % 2 === 0 ? val + translate.x - 1 : val + translate.y - 1,
   );
 
   const gl = GL("color");
@@ -32,8 +30,6 @@ export default function draw(
   const positionBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
-  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
-  gl.utils.clear();
   gl.useProgram(program);
   gl.enableVertexAttribArray(aPosition);
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);

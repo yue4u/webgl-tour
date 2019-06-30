@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { SketchPicker, ColorResult } from "react-color";
 import styled from "@emotion/styled";
+import React, { useState } from "react";
+import { ColorResult, SketchPicker } from "react-color";
 
-type IndicatorProps = {
+interface IndicatorProps {
   color: string;
-};
+}
 
-type ColorInputProps = {
+interface ColorInputProps {
   init: string;
   handleColorChange(color: ColorResult): void;
-};
+}
 
 const Wrapper = styled.div`
   margin: 1rem;
@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 `;
 
 const Indicator = styled.div<IndicatorProps>`
-  background-color: ${props => props.color};
+  background-color: ${(props) => props.color};
   border: 2px #fff solid;
   width: 1rem;
   height: 1rem;
@@ -29,15 +29,15 @@ const Indicator = styled.div<IndicatorProps>`
 
 export default function ColorInput({
   init,
-  handleColorChange
+  handleColorChange,
 }: ColorInputProps) {
   const [color, setColor] = useState<ColorResult | string>(init);
   const [display, setDisplay] = useState(false);
 
-  const handleChangeComplete = (color: ColorResult) => {
-    setColor(color);
+  const handleChangeComplete = (colorResult: ColorResult) => {
+    setColor(colorResult);
     setDisplay(false);
-    handleColorChange(color);
+    handleColorChange(colorResult);
   };
   const hex = typeof color === "string" ? color : color.hex;
   return (
