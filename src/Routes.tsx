@@ -3,6 +3,8 @@ import Index from "./pages/Index";
 import RandomRectangle from "./pages/RandomRectangle";
 import Triangle from "./pages/Triangle/Index";
 import Triangle2 from "./pages/Triangle2/Index";
+import Triangle3 from "./pages/Triangle3/Index";
+
 interface Routes {
   title: string;
   url: string;
@@ -25,6 +27,7 @@ const routes: Routes[] = [
     url: "/triangle-2",
     component: Triangle2,
   },
+  { title: "Triangle-3", url: "/triangle-3", component: Triangle3 },
   {
     title: "Color",
     url: "/color",

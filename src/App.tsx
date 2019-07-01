@@ -1,10 +1,10 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import Layout from "./Layout";
 import Routes from "./Routes";
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Layout>
         <Switch>
           {Routes.map((route, key) => (
@@ -17,6 +17,6 @@ export default function App() {
           ))}
         </Switch>
       </Layout>
-    </BrowserRouter>
+    </HashRouter>
   );
 }

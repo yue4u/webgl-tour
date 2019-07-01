@@ -54,9 +54,13 @@ function getGLUtils(gl: WebGLRenderingContext) {
       if (success) {
         return program;
       }
-      console.log(gl.getProgramInfoLog(program));
       gl.deleteProgram(program);
       throw new Error("cannot create program");
+    },
+    useProgram(vertexShader: WebGLShader, fragmentShader: WebGLShader) {
+      const program = this.createProgram(vertexShader, fragmentShader);
+      gl.useProgram(program);
+      return program;
     },
     vert(templateString: TemplateStringsArray, ...args: string[]) {
       const code = this.interpolate(templateString, ...args);
