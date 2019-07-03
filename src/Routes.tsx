@@ -1,9 +1,10 @@
-import Triangle3 from "./pages/Triangle3/Index";
-import Index from "./pages/Index";
+import Triangle3 from "./pages/Triangle3";
+import Index from "./pages";
 import RandomRectangle from "./pages/RandomRectangle";
-import Triangle from "./pages/Triangle/Index";
-import Triangle2 from "./pages/Triangle2/Index";
-import Triangle4 from "./pages/Triangle4/Index";
+import Triangle from "./pages/Triangle";
+import Triangle2 from "./pages/Triangle2";
+import Triangle4 from "./pages/Triangle4";
+import MasterXiang from "./pages/MasterXiang";
 
 interface Routes {
   title: string;
@@ -37,6 +38,11 @@ const routes: Routes[] = [
     title: "Random Rectangle",
     url: "/random-rectangle",
     component: RandomRectangle
+  },
+  {
+    title: "Master Xiang",
+    url: "/master-xiang",
+    component: MasterXiang
   }
 ];
 

@@ -1,5 +1,7 @@
+import math from './math'
 interface GLInstance extends WebGLRenderingContext {
   utils: GLUtils;
+  math: typeof math;
 }
 type GLUtils = ReturnType<typeof getGLUtils>;
 
@@ -16,7 +18,7 @@ export default function GL(canvasID: string) {
   const gl = context as GLInstance;
   gl.utils = getGLUtils(gl);
   gl.utils.resize(canvas);
-
+  gl.math = math;
   gl.viewport(0, 0, canvas.width, canvas.height);
   gl.utils.clear();
   return gl;
