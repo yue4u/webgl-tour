@@ -1,7 +1,8 @@
 import math from './math'
-interface GLInstance extends WebGLRenderingContext {
+export interface GLInstance extends WebGLRenderingContext {
   utils: GLUtils;
   math: typeof math;
+  canvas: HTMLCanvasElement
 }
 type GLUtils = ReturnType<typeof getGLUtils>;
 
