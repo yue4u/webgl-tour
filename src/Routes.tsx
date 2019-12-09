@@ -6,6 +6,7 @@ import Triangle2 from "./pages/Triangle2";
 import Triangle4 from "./pages/Triangle4";
 import MasterXiang from "./pages/MasterXiang";
 import Cube from "./pages/Cube";
+import CubeYama from "./pages/CubeYama";
 
 interface Routes {
   title: string;
@@ -49,6 +50,11 @@ const routes: Routes[] = [
     title: "Cube",
     url: "/cube",
     component: Cube
+  },
+  {
+    title: "Cube Yama",
+    url: "/cube-yama",
+    component: CubeYama
   }
 ];
 

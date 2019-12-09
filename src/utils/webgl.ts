@@ -1,8 +1,8 @@
-import math from './math'
+import math from "./math";
 export interface GLInstance extends WebGLRenderingContext {
   utils: GLUtils;
   math: typeof math;
-  canvas: HTMLCanvasElement
+  canvas: HTMLCanvasElement;
 }
 type GLUtils = ReturnType<typeof getGLUtils>;
 
@@ -86,12 +86,37 @@ function getGLUtils(gl: WebGLRenderingContext) {
           .join("")
       );
     },
+    texture(src: string) {
+      const img = new Image();
+      const texture = gl.createTexture();
+      img.onload = () => {
+        gl.bindTexture(gl.TEXTURE_2D, texture);
+        gl.texImage2D(
+          gl.TEXTURE_2D,
+          0,
+          gl.RGBA,
+          gl.RGBA,
+          gl.UNSIGNED_BYTE,
+          img
+        );
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        gl.texParameteri(
+          gl.TEXTURE_2D,
+          gl.TEXTURE_MIN_FILTER,
+          gl.LINEAR_MIPMAP_NEAREST
+        );
+        gl.generateMipmap(gl.TEXTURE_2D);
+        gl.bindTexture(gl.TEXTURE_2D, null);
+      };
+      img.src = src;
+      return texture;
+    },
     clear() {
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
     },
     randomInt(range: number) {
       return Math.floor(Math.random() * range);
-    },
+    }
   };
 }
