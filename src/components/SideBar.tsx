@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import routes from "../Routes";
 import { colors } from "../Theme";
 
@@ -33,14 +33,20 @@ const NavigatorText = styled.span`
 `;
 
 export default function SideBar() {
+  const { pathname } = useLocation();
+  const isCurrent = (url: string) => pathname === url;
   return (
     <GlobalSideBar>
       <NavigatorList>
         {routes.map((route, key) => (
           <NavigatorItem key={`sidebar-${key}`}>
-            <Link to={route.url}>
+            {isCurrent(route.url) ? (
               <NavigatorText>{route.title}</NavigatorText>
-            </Link>
+            ) : (
+              <Link to={route.url}>
+                <NavigatorText>{route.title}</NavigatorText>
+              </Link>
+            )}
           </NavigatorItem>
         ))}
       </NavigatorList>

@@ -45,7 +45,7 @@ export default function Selector({ active, options, onChange }: SelectorProps) {
     <SelectorWrapper onClick={handleClick}>
       <select ref={selectEl} onChange={e => onChange(e.target.value)}>
         {Object.entries(options).map(([k, v]) => (
-          <option selected={active === v} value={v}>
+          <option key={v} selected={active === v} value={v}>
             {k}
           </option>
         ))}
