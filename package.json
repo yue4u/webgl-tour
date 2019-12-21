@@ -20,7 +20,7 @@
     "react-three-fiber": "^3.0.17",
     "three": "^0.111.0",
     "tslint": "^5.20.1",
-    "typescript": "^3.7.3"
+    "typescript": "^3.8.0-dev.20191220"
   },
   "scripts": {
     "dev": "react-scripts start",
