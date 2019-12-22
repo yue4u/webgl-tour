@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import React, { useEffect } from "react";
-import { Button, Wrapper } from "../../components/Controller";
 import draw from "./draw";
 const MainCanvas = styled.canvas`
   width: 100%;
@@ -16,9 +15,6 @@ export default function Triangle() {
   return (
     <>
       <MainCanvas id="three" />
-      <Wrapper>
-        <Button onClick={() => draw()}>Rerender</Button>
-      </Wrapper>
     </>
   );
 }

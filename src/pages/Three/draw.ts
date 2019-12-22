@@ -12,14 +12,16 @@ export default function() {
     canvas,
     antialias: true
   });
-  renderer.setClearColor(0x111111);
+  renderer.setClearColor(0xffffff);
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(width, height);
 
   // camera
 
   let camera = new THREE.PerspectiveCamera(70, width / height, 1, 1000);
-  camera.position.z = 100;
+  camera.position.z = -100;
+  camera.position.x = -50;
+  camera.position.y = -10;
 
   // controls
   let controls = new TrackballControls(camera);
@@ -33,7 +35,7 @@ export default function() {
   const light1 = new THREE.AmbientLight(0xffffff, 0.5);
   const light2 = new THREE.DirectionalLight(0xffffff);
 
-  light2.position.set(1, 1, 1);
+  light2.position.set(0, 100, -50);
 
   scene.add(light1);
   scene.add(light2);
@@ -63,10 +65,30 @@ export default function() {
   function render() {
     renderer.render(scene, camera);
   }
+
   function addShapes() {
-    let geometry = new THREE.BoxGeometry(10, 10, 10);
-    let material = new THREE.MeshNormalMaterial();
-    let mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
+    let distance = 30;
+    let offset = 30;
+
+    arr(10).forEach(i =>
+      arr(10).forEach(j => {
+        let geometry = new THREE.BoxGeometry(10, random(5, 100), 10);
+        let color = new THREE.Color(`hsl(${random(1, 255)}, 50%, 50%)`);
+
+        let material = new THREE.MeshLambertMaterial({ color });
+
+        let mesh = new THREE.Mesh(geometry, material);
+        mesh.position.x = distance * i + offset;
+        mesh.position.z = distance * j + offset;
+        scene.add(mesh);
+      })
+    );
+  }
+
+  function arr(len: number) {
+    return [...new Array(len).keys()];
+  }
+  function random(min: number, max: number) {
+    return Math.random() * (max - min) + min;
   }
 }
