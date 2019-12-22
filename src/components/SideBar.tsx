@@ -14,8 +14,11 @@ const NavigatorList = styled.ul`
   text-align: left;
 `;
 
-const NavigatorItem = styled.li`
+const NavigatorItem = styled.li<{
+  current: boolean;
+}>`
   transition: 0.3s all ease-in-out;
+  background-color: ${props => (props.current ? colors.lightseagreen : "")};
   &:hover {
     span {
       color: #fff;
@@ -39,7 +42,7 @@ export default function SideBar() {
     <GlobalSideBar>
       <NavigatorList>
         {routes.map((route, key) => (
-          <NavigatorItem key={`sidebar-${key}`}>
+          <NavigatorItem key={`sidebar-${key}`} current={isCurrent(route.url)}>
             {isCurrent(route.url) ? (
               <NavigatorText>{route.title}</NavigatorText>
             ) : (

@@ -19,6 +19,7 @@
     "react-scripts": "^3.3.0",
     "react-three-fiber": "^3.0.17",
     "three": "^0.111.0",
+    "three-trackballcontrols": "^0.0.8",
     "tslint": "^5.20.1",
     "typescript": "^3.8.0-dev.20191220"
   },

@@ -53,6 +53,11 @@ const routes: Routes[] = [
     component: lazy(() => import("./pages/CubeYama"))
   },
   {
+    title: "Three",
+    url: "/three",
+    component: lazy(() => import("./pages/Three"))
+  },
+  {
     title: "React Three Fiber Test",
     url: "/react-three-fiber-test",
     component: lazy(() => import("./pages/ReactThreeFiberTest"))
