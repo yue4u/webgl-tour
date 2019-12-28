@@ -62,6 +62,11 @@ const routes: Routes[] = [
     url: "/react-three-fiber-test",
     component: lazy(() => import("./pages/ReactThreeFiberTest"))
   },
+  {
+    title: "Shader Stars",
+    url: "/shader-stars",
+    component: lazy(() => import("./pages/ShaderStars"))
+  }
 ];
 
 export default routes;
