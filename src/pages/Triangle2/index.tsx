@@ -10,11 +10,8 @@ import {
 } from "../../components/Controller";
 import { Vec4 } from "../../utils";
 import draw from "./draw";
-const MainCanvas = styled.canvas`
-  width: 100%;
-  height: 100%;
-  max-height: 85vh;
-`;
+
+import MainCanvas from "../../components/MainCanvas";
 
 export default function Triangle2() {
   const initPos = [0, 0, 0, 100, 100, 100, 100, 100, 100, 200, 200, 200];

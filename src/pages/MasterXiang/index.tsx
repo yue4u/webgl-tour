@@ -3,11 +3,8 @@ import React, { useState, useEffect } from "react";
 import { Button, Wrapper, Selector } from "../../components/Controller";
 import math from "../../utils/math";
 import draw from "./draw";
-const MainCanvas = styled.canvas`
-  width: 100%;
-  height: 100%;
-  max-height: 85vh;
-`;
+
+import MainCanvas from "../../components/MainCanvas";
 
 const effectList = {
   normal: [0, 0, 0, 0, 1, 0, 0, 0, 0],
