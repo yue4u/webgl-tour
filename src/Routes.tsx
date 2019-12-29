@@ -66,6 +66,11 @@ const routes: Routes[] = [
     title: "Shader Stars",
     url: "/shader-stars",
     component: lazy(() => import("./pages/ShaderStars"))
+  },
+  {
+    title: "Noise",
+    url: "/shader-noise",
+    component: lazy(() => import("./pages/Noise"))
   }
 ];
 
