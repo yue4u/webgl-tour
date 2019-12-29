@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import { ColorResult } from "react-color";
 import {
@@ -6,7 +5,7 @@ import {
   ControllerRow,
   RangeInput,
   VecInput,
-  Wrapper,
+  Wrapper
 } from "../../components/Controller";
 import { Vec4 } from "../../utils";
 import draw from "./draw";
@@ -44,7 +43,7 @@ export default function Triangle2() {
             value={translate.x}
             max={1000}
             step={1}
-            onValueChange={(x) => setTranslate({ ...translate, x })}
+            onValueChange={x => setTranslate({ ...translate, x })}
           />
         </ControllerRow>
         <ControllerRow>
@@ -53,7 +52,7 @@ export default function Triangle2() {
             value={translate.y}
             max={1000}
             step={1}
-            onValueChange={(y) => setTranslate({ ...translate, y })}
+            onValueChange={y => setTranslate({ ...translate, y })}
           />
         </ControllerRow>
         <ControllerRow>
@@ -62,7 +61,7 @@ export default function Triangle2() {
             value={scale}
             max={5}
             step={0.2}
-            onValueChange={(s) => setScale(s)}
+            onValueChange={s => setScale(s)}
           />
         </ControllerRow>
       </Wrapper>

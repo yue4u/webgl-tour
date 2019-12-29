@@ -1,5 +1,4 @@
-import GL, { GLInstance } from "../../utils/webgl";
-import { randomVec4 } from "../../utils";
+import GL from "../../utils/webgl";
 import { mat4 } from "gl-matrix";
 
 type ProgramInfo = any;

@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import React, { useState, useEffect } from "react";
 import { Button, Wrapper, Selector } from "../../components/Controller";
 import math from "../../utils/math";

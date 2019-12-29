@@ -1,10 +1,9 @@
-import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import {
   ControllerRow,
   RangeInput,
   VecInput,
-  Wrapper,
+  Wrapper
 } from "../../components/Controller";
 import draw from "./draw";
 
@@ -34,7 +33,7 @@ export default function Triangle() {
             value={translate.x}
             max={2}
             step={0.01}
-            onValueChange={(x) => setTranslate({ ...translate, x })}
+            onValueChange={x => setTranslate({ ...translate, x })}
           />
         </ControllerRow>
         <ControllerRow>
@@ -43,7 +42,7 @@ export default function Triangle() {
             value={translate.y}
             max={2}
             step={0.01}
-            onValueChange={(y) => setTranslate({ ...translate, y })}
+            onValueChange={y => setTranslate({ ...translate, y })}
           />
         </ControllerRow>
       </Wrapper>
