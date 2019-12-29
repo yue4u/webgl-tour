@@ -12,7 +12,7 @@ uniform vec2 u_mouse;
 uniform float u_time;
 
 float random (vec2 st) {
-    return fract(sin(dot(st.xy,u_mouse))*40000.);
+    return fract(sin(dot(st.xy,u_mouse + vec2(999.,999.)))*40000.);
 }
 
 void main() {
