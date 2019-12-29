@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import styled from "@emotion/styled";
 import GlslCanvas from "glslCanvas";
 import MainCanvas from "./MainCanvas";
 
@@ -8,6 +9,23 @@ type ShaderProps = {
   fragment: string;
 };
 
+const Code = styled.code`
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: #fff;
+  text-align: left;
+  padding: 10px;
+  text-shadow: 0 0 2px #000;
+  display: inline;
+  background-color: rgba(0, 0, 0, 0.8);
+  max-height: calc(100% - 2rem);
+  max-width: calc(100% - 2rem);
+  overflow: scroll;
+  white-space: pre;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+`;
 export default function Shader({ fragment }: ShaderProps) {
   useEffect(() => {
     const canvas = document.getElementById(ID) as HTMLCanvasElement;
@@ -20,14 +38,17 @@ export default function Shader({ fragment }: ShaderProps) {
       canvas.width = displayWidth;
       canvas.height = displayHeight;
     }
-
     const sandbox = new GlslCanvas(canvas);
     sandbox.load(fragment);
   });
 
+  let [show, setShow] = useState(true);
+
+  const toggle = () => setShow(!show);
   return (
     <>
-      <MainCanvas id={ID} />
+      <MainCanvas onClick={toggle} id={ID} />
+      {show && <Code onClick={toggle}>{fragment}</Code>}
     </>
   );
 }

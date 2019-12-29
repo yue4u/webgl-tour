@@ -53,6 +53,9 @@ export default function Layout({ children }: any) {
             flex-direction: column;
             justify-content: space-between;
           }
+          *::-webkit-scrollbar {
+            display: none;
+          }
         `}
       />
       <FlexColumn>
