@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import GlslCanvas from "glslCanvas";
-import MainCanvas from "../components/MainCancas";
+import MainCanvas from "./MainCanvas";
 
 const ID = `shader-canvas`;
 

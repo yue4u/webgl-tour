@@ -76,6 +76,16 @@ const routes: Routes[] = [
     title: "Noise Mix",
     url: "/noise-mix",
     component: lazy(() => import("./pages/Mix"))
+  },
+  {
+    title: "Cellular Noise",
+    url: "/cellular-noise",
+    component: lazy(() => import("./pages/CellularNoise"))
+  },
+  {
+    title: "DomainWarping",
+    url: "/domain-warping",
+    component: lazy(() => import("./pages/DomainWarping"))
   }
 ];
 
