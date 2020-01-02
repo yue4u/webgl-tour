@@ -10,6 +10,7 @@ type ShaderProps = {
 };
 
 const Code = styled.code`
+  transition: 0.3s all ease-in-out;
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -25,6 +26,10 @@ const Code = styled.code`
   white-space: pre;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
 `;
 export default function Shader({ fragment }: ShaderProps) {
   useEffect(() => {

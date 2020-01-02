@@ -91,6 +91,11 @@ const routes: Routes[] = [
     title: "Circle 3",
     url: "/circle-3",
     component: lazy(() => import("./pages/Circle3"))
+  },
+  {
+    title: "Blinking",
+    url: "/blinking",
+    component: lazy(() => import("./pages/Blinking"))
   }
 ];
 
