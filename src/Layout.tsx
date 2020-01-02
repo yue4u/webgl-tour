@@ -22,6 +22,9 @@ const FlexColumn = styled.div`
 const LayoutMain = styled.main`
   width: 80%;
   position: relative;
+  @media screen and (max-width: 680px) {
+    width: 100%;
+  }
 `;
 export default function Layout({ children }: any) {
   return (
