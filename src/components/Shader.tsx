@@ -30,6 +30,12 @@ const Code = styled.code`
   &:hover {
     background-color: rgba(0, 0, 0, 0.4);
   }
+  @media screen and (max-width: 680px) {
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    max-height: calc(100% - 1rem);
+  }
 `;
 export default function Shader({ fragment }: ShaderProps) {
   useEffect(() => {
