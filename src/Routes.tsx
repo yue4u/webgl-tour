@@ -86,6 +86,11 @@ const routes: Routes[] = [
     title: "DomainWarping",
     url: "/domain-warping",
     component: lazy(() => import("./pages/DomainWarping"))
+  },
+  {
+    title: "Circle 3",
+    url: "/circle-3",
+    component: lazy(() => import("./pages/Circle3"))
   }
 ];
 
