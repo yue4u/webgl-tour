@@ -101,6 +101,11 @@ const routes: Routes[] = [
     title: "Sin Curve",
     url: "/sin-curve",
     component: lazy(() => import("./pages/SinCurve"))
+  },
+  {
+    title: "Sin Curve 2",
+    url: "/sin-curve-2",
+    component: lazy(() => import("./pages/SinCurve2"))
   }
 ];
 
