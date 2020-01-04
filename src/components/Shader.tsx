@@ -18,17 +18,16 @@ const Code = styled.code`
   text-align: left;
   padding: 10px;
   text-shadow: 0 0 2px #000;
-  display: inline;
-  background-color: rgba(0, 0, 0, 0.8);
-  max-height: calc(100% - 2rem);
-  max-width: calc(100% - 2rem);
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  height: calc(100% - 2rem);
+  width: calc(100% - 2rem);
   overflow: scroll;
   white-space: pre;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  cursor: pointer;
   &:hover {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.8);
   }
   @media screen and (max-width: 680px) {
     top: 0;
@@ -53,13 +52,10 @@ export default function Shader({ fragment }: ShaderProps) {
     sandbox.load(fragment);
   });
 
-  let [show, setShow] = useState(true);
-
-  const toggle = () => setShow(!show);
   return (
     <>
-      <MainCanvas onClick={toggle} id={ID} />
-      {show && <Code onClick={toggle}>{fragment}</Code>}
+      <MainCanvas id={ID} />
+      <Code>{fragment}</Code>
     </>
   );
 }
