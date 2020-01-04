@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "@emotion/styled";
 import GlslCanvas from "glslCanvas";
 import MainCanvas from "./MainCanvas";
