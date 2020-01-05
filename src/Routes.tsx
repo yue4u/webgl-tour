@@ -111,6 +111,11 @@ const routes: Routes[] = [
     title: "Triangle 5",
     url: "/triangle-5",
     component: lazy(() => import("./pages/Triangle5"))
+  }, // bloom
+  {
+    title: "Bloom",
+    url: "/bloom",
+    component: lazy(() => import("./pages/Bloom"))
   }
 ];
 
