@@ -154,7 +154,7 @@ export default function() {
               occ += -(dd-hr)*sca;
               sca *= 0.95;
           }
-          return clamp( 1.0 - 3.0*occ, 0.0, 1.0 );    
+          return clamp( 1.0 - 3.0*occ, 0.0, 1.0 );
       }
       
       mat3 calcLookAtMatrix( in vec3 ro, in vec3 ta, in float roll )
