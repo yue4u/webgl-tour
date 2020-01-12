@@ -1,131 +1,48 @@
-import { lazy, LazyExoticComponent } from "react";
-
-interface Routes {
+export type Route = {
   title: string;
   url: string;
-  component?: LazyExoticComponent<() => JSX.Element>;
-}
+};
 
-const routes: Routes[] = [
+const routes: Route[] = [
   {
     title: "Home",
-    url: "/",
-    component: lazy(() => import("./pages"))
+    url: "/"
   },
   {
     title: "Triangle",
-    url: "/triangle",
-    component: lazy(() => import("./pages/Triangle"))
+    url: "/triangle"
   },
   {
     title: "Triangle 2",
-    url: "/triangle-2",
-    component: lazy(() => import("./pages/Triangle2"))
+    url: "/triangle-2"
   },
   {
     title: "Triangle 3",
-    url: "/triangle-3",
-    component: lazy(() => import("./pages/Triangle3"))
+    url: "/triangle-3"
   },
   {
     title: "Triangle 4",
-    url: "/triangle-4",
-    component: lazy(() => import("./pages/Triangle4"))
+    url: "/triangle-4"
   },
   {
     title: "Random Rectangle",
-    url: "/random-rectangle",
-    component: lazy(() => import("./pages/RandomRectangle"))
+    url: "/random-rectangle"
   },
   {
     title: "Master Xiang",
-    url: "/master-xiang",
-    component: lazy(() => import("./pages/MasterXiang"))
-  },
-  {
-    title: "Cube",
-    url: "/cube",
-    component: lazy(() => import("./pages/Cube"))
+    url: "/master-xiang"
   },
   {
     title: "Cube Yama",
-    url: "/cube-yama",
-    component: lazy(() => import("./pages/CubeYama"))
+    url: "/cube-yama"
   },
   {
     title: "Three",
-    url: "/three",
-    component: lazy(() => import("./pages/Three"))
+    url: "/three"
   },
   {
     title: "React Three Fiber Test",
-    url: "/react-three-fiber-test",
-    component: lazy(() => import("./pages/ReactThreeFiberTest"))
-  },
-  {
-    title: "Shader Stars",
-    url: "/shader-stars",
-    component: lazy(() => import("./pages/ShaderStars"))
-  },
-  {
-    title: "Noise",
-    url: "/shader-noise",
-    component: lazy(() => import("./pages/Noise"))
-  },
-  {
-    title: "Noise Mix",
-    url: "/noise-mix",
-    component: lazy(() => import("./pages/Mix"))
-  },
-  {
-    title: "Cellular Noise",
-    url: "/cellular-noise",
-    component: lazy(() => import("./pages/CellularNoise"))
-  },
-  {
-    title: "DomainWarping",
-    url: "/domain-warping",
-    component: lazy(() => import("./pages/DomainWarping"))
-  },
-  {
-    title: "Circle 3",
-    url: "/circle-3",
-    component: lazy(() => import("./pages/Circle3"))
-  },
-  {
-    title: "Blinking",
-    url: "/blinking",
-    component: lazy(() => import("./pages/Blinking"))
-  },
-  {
-    title: "Sin Curve",
-    url: "/sin-curve",
-    component: lazy(() => import("./pages/SinCurve"))
-  },
-  {
-    title: "Sin Curve 2",
-    url: "/sin-curve-2",
-    component: lazy(() => import("./pages/SinCurve2"))
-  },
-  {
-    title: "Triangle 5",
-    url: "/triangle-5",
-    component: lazy(() => import("./pages/Triangle5"))
-  }, // bloom
-  {
-    title: "Bloom",
-    url: "/bloom",
-    component: lazy(() => import("./pages/Bloom"))
-  },
-  {
-    title: "Sketch",
-    url: "/sketch",
-    component: lazy(() => import("./pages/Sketch"))
-  },
-  {
-    title: "Sketch2",
-    url: "/sketch2",
-    component: lazy(() => import("./pages/Sketch2"))
+    url: "/react-three-fiber-test"
   }
 ];
 

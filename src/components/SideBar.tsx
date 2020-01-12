@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import routes from "../Routes";
+import { StaticQuery, graphql, Link } from "gatsby";
+import routes, { Route } from "../Routes";
 import { colors } from "../Theme";
 
 const GlobalSideBar = styled.aside<{ show: boolean }>`
@@ -59,38 +59,64 @@ const NavigatorText = styled.span`
 `;
 
 export default function SideBar() {
-  const { pathname } = useLocation();
+  const pathname = typeof window !== undefined || window.location.pathname;
   const [show, setShow] = useState(false);
   const isCurrent = (url: string) => pathname === url;
   useEffect(() => {
     setShow(false);
   }, [pathname]);
+
   return (
-    <>
-      <SideBarButton
-        onClick={() => {
-          console.log(1);
-          setShow(!show);
-        }}
-      />
-      <GlobalSideBar show={show}>
-        <NavigatorList>
-          {routes.map((route, key) => (
-            <NavigatorItem
-              key={`sidebar-${key}`}
-              current={isCurrent(route.url)}
-            >
-              {isCurrent(route.url) ? (
-                <NavigatorText>{route.title}</NavigatorText>
-              ) : (
-                <Link to={route.url}>
-                  <NavigatorText>{route.title}</NavigatorText>
-                </Link>
-              )}
-            </NavigatorItem>
-          ))}
-        </NavigatorList>
-      </GlobalSideBar>
-    </>
+    <StaticQuery
+      query={graphql`
+        {
+          allShader(sort: { order: ASC, fields: name }) {
+            edges {
+              node {
+                id
+                name
+                title
+              }
+            }
+          }
+        }
+      `}
+      render={({ allShader }) => {
+        const shaders: Route[] = allShader.edges.map(({ node }: any) => {
+          return {
+            title: node.title || node.name,
+            url: node.name
+          };
+        });
+        return (
+          <>
+            <SideBarButton
+              onClick={() => {
+                console.log(1);
+                setShow(!show);
+              }}
+            />
+            <GlobalSideBar show={show}>
+              <NavigatorList>
+                {[...routes, ...shaders].map((route, key) => (
+                  <NavigatorItem
+                    key={`sidebar-${key}`}
+                    current={isCurrent(route.url)}
+                  >
+                    {isCurrent(route.url) ? (
+                      <NavigatorText>{route.title}</NavigatorText>
+                    ) : (
+                      <Link to={route.url}>
+                        <NavigatorText>{route.title}</NavigatorText>
+                      </Link>
+                    )}
+                  </NavigatorItem>
+                ))}
+              </NavigatorList>
+            </GlobalSideBar>
+          </>
+        );
+      }}
+    />
   );
 }

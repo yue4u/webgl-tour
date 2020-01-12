@@ -1,5 +1,5 @@
 {
-  "name": "emotion-typescript-react-starter",
+  "name": "webgl-lab",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,14 +10,15 @@
     "@types/react-color": "^3.0.1",
     "@types/react-dom": "^16.9.4",
     "@types/react-router-dom": "^5.1.3",
+    "gatsby": "^2.18.21",
+    "gatsby-plugin-typescript": "^2.1.26",
+    "gatsby-source-filesystem": "^2.1.46",
     "gl-matrix": "^3.1.0",
     "glslCanvas": "^0.1.7",
     "react": "^16.12.0",
     "react-color": "^2.17.3",
     "react-dom": "^16.12.0",
     "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.3.0",
     "react-three-fiber": "^3.0.17",
     "three": "^0.111.0",
     "three-trackballcontrols": "^0.0.8",
@@ -25,9 +26,8 @@
     "typescript": "^3.8.0-dev.20191220"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject",
+    "dev": "gatsby develop",
+    "build": "gatsby build",
     "lint": "tslint --project . --fix"
   },
   "eslintConfig": {
