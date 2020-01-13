@@ -3,10 +3,20 @@ import styled from "@emotion/styled";
 import GlslCanvas from "glslCanvas";
 import MainCanvas from "./MainCanvas";
 
-const ID = `shader-canvas`;
-
 type ShaderProps = {
   fragment: string;
+  showCode?: boolean;
+};
+const hash = (str: string) => {
+  let hash = 0;
+  let chars = [...str];
+  if (chars.length === 0) return hash.toString();
+
+  chars.forEach(char => {
+    hash = (hash << 5) - hash + char.charCodeAt(0);
+    hash |= 0;
+  });
+  return hash.toString();
 };
 
 const CodeContent = styled.span`
@@ -42,28 +52,33 @@ const Code = styled.code`
   }
 `;
 
-export default function Shader({ fragment }: ShaderProps) {
+export default function Shader({ fragment, showCode }: ShaderProps) {
+  const ID = hash(fragment);
   useEffect(() => {
-    const canvas = document.getElementById(ID) as HTMLCanvasElement;
-    if (!canvas) return;
+    try {
+      const canvas = document.getElementById(ID) as HTMLCanvasElement;
+      if (!canvas) return;
 
-    const displayWidth = canvas.clientWidth;
-    const displayHeight = canvas.clientHeight;
+      const displayWidth = canvas.clientWidth;
+      const displayHeight = canvas.clientHeight;
 
-    if (canvas.width !== displayWidth || canvas.height !== displayHeight) {
-      canvas.width = displayWidth;
-      canvas.height = displayHeight;
-    }
-    const sandbox = new GlslCanvas(canvas);
-    sandbox.load(fragment);
+      if (canvas.width !== displayWidth || canvas.height !== displayHeight) {
+        canvas.width = displayWidth;
+        canvas.height = displayHeight;
+      }
+      const sandbox = new GlslCanvas(canvas);
+      sandbox.load(fragment);
+    } catch {}
   });
 
   return (
     <>
       <MainCanvas id={ID} />
-      <Code>
-        <CodeContent>{fragment}</CodeContent>
-      </Code>
+      {showCode && (
+        <Code>
+          <CodeContent>{fragment}</CodeContent>
+        </Code>
+      )}
     </>
   );
 }

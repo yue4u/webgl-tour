@@ -8,7 +8,7 @@ export const ShaderPageTemplate = ({ data }: any) => {
 
   return (
     <Layout title={title}>
-      <Shader fragment={content} />
+      <Shader fragment={content} showCode />
     </Layout>
   );
 };
