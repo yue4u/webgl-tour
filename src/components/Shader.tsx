@@ -9,6 +9,15 @@ type ShaderProps = {
   fragment: string;
 };
 
+const CodeContent = styled.span`
+  transition: 0.3s all ease-in-out;
+  display: inline;
+  padding: 2px;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+`;
+
 const Code = styled.code`
   transition: 0.3s all ease-in-out;
   position: absolute;
@@ -18,7 +27,6 @@ const Code = styled.code`
   text-align: left;
   padding: 10px;
   text-shadow: 0 0 2px #000;
-  background-color: rgba(0, 0, 0, 0.1);
   display: block;
   height: calc(100% - 2rem);
   width: calc(100% - 2rem);
@@ -26,9 +34,6 @@ const Code = styled.code`
   white-space: pre;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
   @media screen and (max-width: 680px) {
     top: 0;
     left: 0;
@@ -36,6 +41,7 @@ const Code = styled.code`
     max-height: calc(100% - 1rem);
   }
 `;
+
 export default function Shader({ fragment }: ShaderProps) {
   useEffect(() => {
     const canvas = document.getElementById(ID) as HTMLCanvasElement;
@@ -55,7 +61,9 @@ export default function Shader({ fragment }: ShaderProps) {
   return (
     <>
       <MainCanvas id={ID} />
-      <Code>{fragment}</Code>
+      <Code>
+        <CodeContent>{fragment}</CodeContent>
+      </Code>
     </>
   );
 }
