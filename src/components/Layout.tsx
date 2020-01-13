@@ -59,6 +59,11 @@ export default function Layout({ children }: any) {
           *::-webkit-scrollbar {
             display: none;
           }
+          #gatsby-focus-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+          }
         `}
       />
       <FlexColumn>
