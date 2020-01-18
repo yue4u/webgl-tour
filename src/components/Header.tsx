@@ -1,7 +1,11 @@
 import styled from "@emotion/styled";
 import React from "react";
+import { Link } from "gatsby";
 import { colors } from "../Theme";
 
+const StyledLink = styled(Link)`
+  color: #000;
+`;
 const GlobalHeader = styled.header`
   border-bottom: 3px solid ${colors.lightseagreen};
   box-shadow: 0 0 5px #888;
@@ -12,5 +16,9 @@ const GlobalHeader = styled.header`
 `;
 
 export default function Header() {
-  return <GlobalHeader>WebGL Lab.</GlobalHeader>;
+  return (
+    <GlobalHeader>
+      <StyledLink to="/">WebGL Lab.</StyledLink>
+    </GlobalHeader>
+  );
 }
