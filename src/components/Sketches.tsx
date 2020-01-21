@@ -41,7 +41,7 @@ const Sketches: FC<{ sketches: SketchSource[] }> = ({ sketches }) => {
       {sketches.map(({ title, name, content }) => (
         <Sketch key={name}>
           <Link to={`/${name}`}>
-            <Shader fragment={content} />
+            <Shader canvasId={title} fragment={content} />
             <span>{title || name}</span>
           </Link>
         </Sketch>

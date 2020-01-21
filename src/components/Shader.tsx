@@ -1,22 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import GlslCanvas from "glslCanvas";
 import MainCanvas from "./MainCanvas";
 
 type ShaderProps = {
+  canvasId: string;
   fragment: string;
   showCode?: boolean;
-};
-const hash = (str: string) => {
-  let hash = 0;
-  let chars = [...str];
-  if (chars.length === 0) return hash.toString();
-
-  chars.forEach(char => {
-    hash = (hash << 5) - hash + char.charCodeAt(0);
-    hash |= 0;
-  });
-  return hash.toString();
 };
 
 const CodeContent = styled.span`
@@ -52,9 +42,11 @@ const Code = styled.code`
   }
 `;
 
-export default function Shader({ fragment, showCode }: ShaderProps) {
-  const ID = hash(fragment);
+export default function Shader({ canvasId, fragment, showCode }: ShaderProps) {
+  const ID = canvasId;
+  const [err, setErr] = useState(false);
   useEffect(() => {
+    if (err) return;
     try {
       const canvas = document.getElementById(ID) as HTMLCanvasElement;
       if (!canvas) return;
@@ -68,8 +60,14 @@ export default function Shader({ fragment, showCode }: ShaderProps) {
       }
       const sandbox = new GlslCanvas(canvas);
       sandbox.load(fragment);
-    } catch {}
-  });
+    } catch {
+      setErr(true);
+    }
+  }, [ID, err, fragment]);
+
+  if (err) {
+    return <></>;
+  }
 
   return (
     <>
