@@ -1,14 +1,13 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Layout from "../components/Layout";
-import Shader from "../components/Shader";
+import { Layout, Shader } from "../components";
 
 export const ShaderPageTemplate = ({ data }: any) => {
   const { title, content } = data.shader;
 
   return (
     <Layout title={title}>
-      <Shader fragment={content} showCode />
+      <Shader canvasId={title} fragment={content} showCode />
     </Layout>
   );
 };
