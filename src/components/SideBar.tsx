@@ -85,7 +85,7 @@ export default function SideBar() {
         const shaders: Route[] = allShader.edges.map(({ node }: any) => {
           return {
             title: node.title || node.name,
-            url: node.name
+            url: node.name.startsWith("/") ? node.name : `/${node.name}`
           };
         });
         return (
