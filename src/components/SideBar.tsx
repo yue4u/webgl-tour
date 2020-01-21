@@ -59,7 +59,10 @@ const NavigatorText = styled.span`
 
 export default function SideBar() {
   const [show, setShow] = useState(false);
-  const isCurrent = (url: string) => window.location.pathname === url;
+  const isCurrent = (url: string) => {
+    if (typeof window === "undefined") return false;
+    return window.location.pathname === url;
+  };
   useEffect(() => {
     setShow(false);
   }, [show]);
