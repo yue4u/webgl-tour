@@ -6,7 +6,6 @@ import { colors } from "../Theme";
 
 const GlobalSideBar = styled.aside<{ show: boolean }>`
   width: 20%;
-  border-right: 1px solid #eee;
   @media screen and (max-width: 680px) {
     display: ${props => (props.show ? "block" : "none")};
     position: fixed;
@@ -37,17 +36,17 @@ const NavigatorList = styled.ul`
   text-align: left;
 `;
 
-const NavigatorItem = styled.li<{
+type ItemProp = {
   current: boolean;
-}>`
-  transition: 0.3s all ease-in-out;
-  background-color: ${props => (props.current ? colors.lightseagreen : "")};
+};
+const NavigatorItem = styled.li<ItemProp>`
+  transition: 0.15s all ease-in-out;
+  background-color: ${props => (props.current ? colors.border : colors.opaque)};
+  span {
+    color: #fff;
+  }
   &:hover {
-    span {
-      color: #fff;
-      transition-delay: 0.1s;
-    }
-    background-color: ${colors.lightseagreen};
+    background-color: ${colors.border};
   }
 `;
 

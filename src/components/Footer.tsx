@@ -3,7 +3,9 @@ import React from "react";
 import { colors } from "../Theme";
 
 const GlobalFooter = styled.footer`
-  border-top: 3px solid ${colors.lightseagreen};
+  background-color: ${colors.opaque};
+  color: #fff;
+  border-top: 3px solid ${colors.border};
   text-align: center;
   padding: 10px;
   font-size: 30px;

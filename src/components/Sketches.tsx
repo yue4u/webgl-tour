@@ -21,12 +21,13 @@ const SketchesWrapper = styled.ul`
 
 const Sketch = styled.li`
   width: 44%;
-  height: 15rem;
   margin: 1rem;
+  filter: drop-shadow(0 0 3px #000);
   a {
+    padding: 3px 0; 
     width: 100%;
-    background-color: #fff;
-    box-shadow: 0 3px 0px skyblue, 3px 0 0 hotpink;
+    background-color: #000;
+    color: #fff;
     overflow: auto;
     display: inline-block;
   }

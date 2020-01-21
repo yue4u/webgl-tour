@@ -1,7 +1,7 @@
 import { css, Global } from "@emotion/core";
 import styled from "@emotion/styled";
 import * as React from "react";
-import { Header, SideBar, Footer } from ".";
+import { Header, SideBar, Footer, Background } from ".";
 
 const Flex = styled.div`
   display: flex;
@@ -64,6 +64,7 @@ export default function Layout({ children }: any) {
           }
         `}
       />
+      <Background />
       <FlexColumn>
         <Header />
         <Flex>
