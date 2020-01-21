@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
-import { Button, Wrapper } from "../components/Controller";
-import Layout from "../components/Layout";
 import draw from "../draw/cube";
-
-import MainCanvas from "../components/MainCanvas";
+import { Layout, MainCanvas, Button, Wrapper } from "../components";
 
 export default function Triangle() {
   const id = "Cube";

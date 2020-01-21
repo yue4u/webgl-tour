@@ -1,6 +1,5 @@
 import React from "react";
-import Layout from "../components/Layout";
-import Sketches from "../components/Sketches";
+import { Layout, Sketches } from "../components";
 export default function Home() {
   return (
     <Layout>

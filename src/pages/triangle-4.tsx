@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
-import { Button, Wrapper } from "../components/Controller";
 import draw from "../draw/triangle-4";
-import Layout from "../components/Layout";
-import MainCanvas from "../components/MainCanvas";
+import { Layout, MainCanvas, Button, Wrapper } from "../components";
 
 export default function Triangle2() {
   useEffect(() => {

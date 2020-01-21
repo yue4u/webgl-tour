@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Canvas, useFrame } from "react-three-fiber";
-import Layout from "../components/Layout";
+import { Layout } from "../components";
 
 function Scene() {
   const ref = useRef<any>();

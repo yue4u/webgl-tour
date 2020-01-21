@@ -5,12 +5,12 @@ import {
   ControllerRow,
   RangeInput,
   VecInput,
-  Wrapper
-} from "../components/Controller";
+  Wrapper,
+  Layout,
+  MainCanvas
+} from "../components";
 import { Vec4 } from "../utils";
 import draw from "../draw/triangle-2";
-import Layout from "../components/Layout";
-import MainCanvas from "../components/MainCanvas";
 
 export default function Triangle2() {
   const initPos = [0, 0, 0, 100, 100, 100, 100, 100, 100, 200, 200, 200];

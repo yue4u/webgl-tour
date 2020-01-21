@@ -1,9 +1,7 @@
 import { css, Global } from "@emotion/core";
 import styled from "@emotion/styled";
 import * as React from "react";
-import Footer from "./Footer";
-import Header from "./Header";
-import SideBar from "./SideBar";
+import { Header, SideBar, Footer } from ".";
 
 const Flex = styled.div`
   display: flex;

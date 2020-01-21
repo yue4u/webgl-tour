@@ -66,7 +66,7 @@ export default function Shader({ canvasId, fragment, showCode }: ShaderProps) {
   }, [ID, err, fragment]);
 
   if (err) {
-    return <></>;
+    return <>ERROR! {err}</>;
   }
 
   return (

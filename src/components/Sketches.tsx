@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { StaticQuery, graphql, Link } from "gatsby";
 import styled from "@emotion/styled";
-import Shader from "../components/Shader";
+import { Shader } from "../components";
 
 type SketchSource = {
   title: string;
@@ -54,7 +54,7 @@ const SketchesQuery = () => (
   <StaticQuery
     query={graphql`
       {
-        allShader(sort: { order: DESC, fields: birthTime }) {
+        allShader(sort: { order: DESC, fields: birthTime }, limit: 10) {
           edges {
             node {
               title

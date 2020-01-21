@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Wrapper, Selector } from "../components/Controller";
 import math from "../utils/math";
 import draw from "../draw/master-xiang";
-import Layout from "../components/Layout";
-import MainCanvas from "../components/MainCanvas";
+import { Layout, MainCanvas } from "../components";
 
 const effectList = {
   normal: [0, 0, 0, 0, 1, 0, 0, 0, 0],

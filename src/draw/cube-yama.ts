@@ -1,8 +1,6 @@
 import GL from "../utils/webgl";
 import { mat4 } from "gl-matrix";
 
-type ProgramInfo = any;
-
 let cubeRotation = 0.0;
 
 export default function draw(id: string) {

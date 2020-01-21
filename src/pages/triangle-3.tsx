@@ -3,11 +3,11 @@ import {
   ControllerRow,
   RangeInput,
   VecInput,
-  Wrapper
-} from "../components/Controller";
+  Wrapper,
+  Layout,
+  MainCanvas
+} from "../components";
 import draw from "../draw/triangle-3";
-import Layout from "../components/Layout";
-import MainCanvas from "../components/MainCanvas";
 
 export default function Triangle() {
   const initPos = [2, -2, -1, 1, 1, 1, 2];

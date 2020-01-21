@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
-import { Button, Wrapper } from "../components/Controller";
+import { Layout, MainCanvas, Button, Wrapper } from "../components";
 import draw from "../draw/random-rectangle";
-import Layout from "../components/Layout";
-import MainCanvas from "../components/MainCanvas";
 
 export default function Triangle() {
   useEffect(() => {
