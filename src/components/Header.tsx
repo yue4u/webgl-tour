@@ -6,7 +6,7 @@ import { colors } from "../Theme";
 const StyledLink = styled(Link)`
   color: #000;
   font-size: 30px;
-  filter: drop-shadow(0px 0px 1px #000) drop-shadow(0px 0px 3px #333);
+  filter: drop-shadow(0px 0px 1px #000) drop-shadow(0px 0px 3px #000);
   display: inline-block;
   background-image: linear-gradient(
     to right,

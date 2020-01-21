@@ -1,21 +1,27 @@
 import styled from "@emotion/styled";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { StaticQuery, graphql, Link } from "gatsby";
 import routes, { Route } from "../Routes";
 import { colors } from "../Theme";
 
 const GlobalSideBar = styled.aside<{ show: boolean }>`
   width: 20%;
+  padding: 1rem 0;
+  position: sticky;
+  overflow: scroll;
+  top: 0;
+  height: 100vh;
+  background-color: ${colors.opaque};
   @media screen and (max-width: 680px) {
+    padding: 0;
     display: ${props => (props.show ? "block" : "none")};
     position: fixed;
-    top: 3rem;
+    top: 2.8rem;
     left: 0;
     width: 100vw;
-    height: calc(100vh - 3rem);
+    height: calc(100vh - 2.8rem);
     z-index: 20;
-    overflow: scroll;
-    background-color: #fff;
+    background-color: rgb(0 0 0 / 0.9);
   }
 `;
 const SideBarButton = styled.div`
@@ -24,7 +30,13 @@ const SideBarButton = styled.div`
   right: 10px;
   width: 30px;
   height: 30px;
-  background-image: linear-gradient(to bottom, skyblue, hotpink);
+  background-image: conic-gradient(
+    #eea2a2 0%,
+    #bbc1bf 19%,
+    #57c6e1 42%,
+    #b49fda 79%,
+    #7ac5d8 100%
+  );
   z-index: 10;
   @media screen and (min-width: 680px) {
     display: none;
@@ -41,12 +53,12 @@ type ItemProp = {
 };
 const NavigatorItem = styled.li<ItemProp>`
   transition: 0.15s all ease-in-out;
-  background-color: ${props => (props.current ? colors.border : colors.opaque)};
+  background-color: ${props => (props.current ? colors.border : "")};
   span {
     color: #fff;
   }
   &:hover {
-    opacity: 0.8;
+    background-color: rgb(255 255 255 / 0.2);
   }
 `;
 
@@ -63,9 +75,6 @@ export default function SideBar() {
     if (typeof window === "undefined") return false;
     return window.location.pathname === url;
   };
-  useEffect(() => {
-    setShow(false);
-  }, [show]);
 
   return (
     <StaticQuery

@@ -9,6 +9,7 @@ const GlobalFooter = styled.footer`
   text-align: center;
   padding: 10px;
   font-size: 30px;
+  box-shadow: 0 0 1rem #000;
 `;
 
 export default function Header() {
