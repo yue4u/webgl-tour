@@ -8,7 +8,14 @@ const StyledLink = styled(Link)`
   font-size: 30px;
   filter: drop-shadow(0px 0px 1px #000) drop-shadow(0px 0px 3px #333);
   display: inline-block;
-  background: linear-gradient(skyblue, hotpink);
+  background-image: linear-gradient(
+    to right,
+    #eea2a2 0%,
+    #bbc1bf 19%,
+    #57c6e1 42%,
+    #b49fda 79%,
+    #7ac5d8 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

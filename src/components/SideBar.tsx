@@ -46,7 +46,7 @@ const NavigatorItem = styled.li<ItemProp>`
     color: #fff;
   }
   &:hover {
-    background-color: ${colors.border};
+    opacity: 0.8;
   }
 `;
 
@@ -58,12 +58,11 @@ const NavigatorText = styled.span`
 `;
 
 export default function SideBar() {
-  const pathname = typeof window !== undefined || window.location.pathname;
   const [show, setShow] = useState(false);
-  const isCurrent = (url: string) => pathname === url;
+  const isCurrent = (url: string) => window.location.pathname === url;
   useEffect(() => {
     setShow(false);
-  }, [pathname]);
+  }, [show]);
 
   return (
     <StaticQuery
@@ -91,7 +90,6 @@ export default function SideBar() {
           <>
             <SideBarButton
               onClick={() => {
-                console.log(1);
                 setShow(!show);
               }}
             />
@@ -102,13 +100,9 @@ export default function SideBar() {
                     key={`sidebar-${key}`}
                     current={isCurrent(route.url)}
                   >
-                    {isCurrent(route.url) ? (
+                    <Link to={route.url}>
                       <NavigatorText>{route.title}</NavigatorText>
-                    ) : (
-                      <Link to={route.url}>
-                        <NavigatorText>{route.title}</NavigatorText>
-                      </Link>
-                    )}
+                    </Link>
                   </NavigatorItem>
                 ))}
               </NavigatorList>

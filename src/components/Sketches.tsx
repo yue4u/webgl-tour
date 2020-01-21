@@ -24,7 +24,7 @@ const Sketch = styled.li`
   margin: 1rem;
   filter: drop-shadow(0 0 3px #000);
   a {
-    padding: 3px 0; 
+    padding: 3px 0;
     width: 100%;
     background-color: #000;
     color: #fff;
