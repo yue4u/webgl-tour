@@ -15,6 +15,7 @@ const GlobalSideBar = styled.aside<{ show: boolean }>`
   *::-webkit-scrollbar {
     display: none;
   }
+  scrollbar-width: none;
   @media screen and (max-width: 680px) {
     padding: 0;
     display: ${props => (props.show ? "block" : "none")};
