@@ -6,6 +6,7 @@ import { Shader } from "../components";
 type SketchSource = {
   title: string;
   name: string;
+  id: string;
   content: string;
   modifiedTime: string;
 };
@@ -39,10 +40,10 @@ const Sketch = styled.li`
 const Sketches: FC<{ sketches: SketchSource[] }> = ({ sketches }) => {
   return (
     <SketchesWrapper>
-      {sketches.map(({ title, name, content }) => (
+      {sketches.map(({ title, id, name, content }) => (
         <Sketch key={name}>
           <Link to={`/${name}`}>
-            <Shader canvasId={title} fragment={content} />
+            <Shader canvasId={title || id} fragment={content} />
             <span>{title || name}</span>
           </Link>
         </Sketch>
@@ -58,6 +59,7 @@ const SketchesQuery = () => (
         allShader(sort: { order: DESC, fields: birthTime }, limit: 10) {
           edges {
             node {
+              id
               title
               name
               content
