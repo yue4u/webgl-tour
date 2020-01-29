@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import React, { useState } from "react";
 import { StaticQuery, graphql, Link } from "gatsby";
+import Img from "gatsby-image";
 import routes, { Route } from "../Routes";
 import { colors } from "../Theme";
 
@@ -70,8 +71,16 @@ const NavigatorText = styled.span`
   padding: 5px 15px;
   display: block;
   color: #000;
-  font-size: 24px;
+  font-size: 1rem;
 `;
+
+const Hr = styled.hr`
+  margin: 0;
+  border: 1.5px solid #000;
+`;
+type RouteWithThumbnail = {
+  img?: any;
+} & Route;
 
 export default function SideBar() {
   const [show, setShow] = useState(false);
@@ -93,15 +102,31 @@ export default function SideBar() {
               }
             }
           }
+
+          allFile(filter: { extension: { eq: "png" } }) {
+            nodes {
+              name
+              childImageSharp {
+                fluid(maxWidth: 200, maxHeight: 120) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
         }
       `}
-      render={({ allShader }) => {
-        const shaders: Route[] = allShader.edges.map(({ node }: any) => {
-          return {
-            title: node.title || node.name,
-            url: node.name.startsWith("/") ? node.name : `/${node.name}`
-          };
-        });
+      render={({ allShader, allFile }) => {
+        const shaders: RouteWithThumbnail[] = allShader.edges.map(
+          ({ node }: any) => {
+            const title = node.title || node.name;
+            return {
+              title,
+              url: node.name.startsWith("/") ? node.name : `/${node.name}`,
+              img: allFile.nodes.find((n: any) => n.name === title)
+                ?.childImageSharp?.fluid
+            };
+          }
+        );
         return (
           <>
             <SideBarButton
@@ -111,16 +136,20 @@ export default function SideBar() {
             />
             <GlobalSideBar show={show}>
               <NavigatorList>
-                {[...routes, ...shaders].map((route, key) => (
-                  <NavigatorItem
-                    key={`sidebar-${key}`}
-                    current={isCurrent(route.url)}
-                  >
-                    <Link to={route.url}>
-                      <NavigatorText>{route.title}</NavigatorText>
-                    </Link>
-                  </NavigatorItem>
-                ))}
+                {([...routes, ...shaders] as RouteWithThumbnail[]).map(
+                  (route, key) => (
+                    <NavigatorItem
+                      key={`sidebar-${key}`}
+                      current={isCurrent(route.url)}
+                    >
+                      {key !== 0 && <Hr />}
+                      <Link to={route.url}>
+                        {route.img && <Img fluid={route.img} />}
+                        <NavigatorText>{route.title}</NavigatorText>
+                      </Link>
+                    </NavigatorItem>
+                  )
+                )}
               </NavigatorList>
             </GlobalSideBar>
           </>
