@@ -7,7 +7,7 @@ const puppeter = require("puppeteer");
 
 module.exports = async function screenshotAll(
   shaders, //: Shader[],
-  headless = false
+  headless = true
 ) {
   const browser = await puppeter.launch({
     headless,

@@ -107,6 +107,7 @@ exports.onPreBuild = async ({ graphql }) => {
       if (skip) console.log(`skip ${node.title}`)
       return !skip
     });
+  if (!shaders) return;
   await screenshotAll(shaders);
 }
 
