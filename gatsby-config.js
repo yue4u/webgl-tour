@@ -17,6 +17,7 @@ module.exports = {
         name: 'shaders'
       }
     },
+    `gatsby-plugin-emotion`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-typescript`

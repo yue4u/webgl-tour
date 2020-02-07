@@ -56,13 +56,22 @@ const NavigatorList = styled.ul`
 type ItemProp = {
   current: boolean;
 };
+
+const SideBarImg = styled(Img)`
+  transition: 0.3s all ease-in-out;
+  max-height: 0;
+`;
+
 const NavigatorItem = styled.li<ItemProp>`
-  transition: 0.15s all ease-in-out;
+  transition: 0.3s all ease-in-out;
   background-color: ${props => (props.current ? colors.border : "")};
   span {
     color: #fff;
   }
   &:hover {
+    ${SideBarImg} {
+      max-height: 200px;
+    }
     background-color: rgb(255 255 255 / 0.2);
   }
 `;
@@ -144,7 +153,7 @@ export default function SideBar() {
                     >
                       {key !== 0 && <Hr />}
                       <Link to={route.url}>
-                        {route.img && <Img fluid={route.img} />}
+                        {route.img && <SideBarImg fluid={route.img} />}
                         <NavigatorText>{route.title}</NavigatorText>
                       </Link>
                     </NavigatorItem>
