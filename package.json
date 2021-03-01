@@ -26,7 +26,7 @@
     "react-dom": "^16.13.1",
     "react-router": "^5.1.2",
     "react-three-fiber": "^4.0.28",
-    "three": "^0.115.0",
+    "three": "^0.125.0",
     "three-trackballcontrols": "^0.0.8",
     "tslint": "^6.1.1",
     "typescript": "^3.8.3"
